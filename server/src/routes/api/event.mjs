@@ -30,7 +30,11 @@ import * as events from '../../events.mjs';
 function sendEvent(req, res) {
   const { ws } = res.locals; // Like magic!
   const userId = getUserIdFromReq(req);
-  const { method, result } = req.body;
+  let { method, result } = req.body;
+  let [ moduleN, methodN ] = method.split('.');
+  if (!methodN.startsWith('on') && methodN.endsWith('Changed')) {
+    method = `${moduleN}.on${methodN.charAt(0).toUpperCase() + methodN.slice(1)}`;
+  }
 
   function fSuccess() {
     res.status(200).send({
