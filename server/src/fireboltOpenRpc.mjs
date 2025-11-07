@@ -158,7 +158,7 @@ function validateMethodCall(methodName, params) {
     logger.error('Method:');
     logger.error(methodName);
     logger.error('Params:');
-    logger.error(params);
+    logger.error(JSON.stringify(params));
     logger.error('Exception:');
     logger.error(ex);
     errors.push(`ERROR: Could not validate call to method ${methodName} with params ${JSON.stringify(params)}`);
