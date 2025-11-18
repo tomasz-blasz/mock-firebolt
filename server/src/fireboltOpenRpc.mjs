@@ -227,7 +227,7 @@ function validateMethodResult(val, methodName) {
     logger.error(methodName);
     logger.error('Exception:');
     logger.error(ex);
-    errors.push(`ERROR: Could not validate value ${val} for method ${methodName}`);
+    errors.push(`ERROR: Could not validate value ${JSON.stringify(val)} for method ${methodName}`);
 
     return errors; // Treat as invalid
   }
